@@ -61,7 +61,7 @@ class LinearRegressionModel(Model):
         :return: Loaded model or None.
         """
         try:
-            with open(self.filename, "rb") as input_model:
+            with open("data/" + self.filename, "rb") as input_model:
                 self.linear = pickle.load(input_model)
                 self.x_train, self.x_test, self.y_train, self.y_test = sklearn.model_selection.train_test_split(
                     self.x, self.y, test_size=self.test_size)
@@ -78,7 +78,7 @@ class LinearRegressionModel(Model):
         :return: None.
         """
         try:
-            with open(self.filename, "wb") as file:
+            with open("data/" + self.filename, "wb") as file:
                 return pickle.dump(self.linear, file)
 
         except FileNotFoundError as error:
